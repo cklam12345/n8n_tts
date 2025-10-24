@@ -1,0 +1,9 @@
+# 1. Create the text file
+echo "Hello Chin Keong, My name is Hal 2000, How are you feeling today, I can open the pod bay door for you" > output.txt
+
+# 2. Run Piper
+# Get-Content reads the file, and the pipe (|) sends the text to the piper program.
+Get-Content -Path output.txt | piper --model models\hal.onnx --output_file output.wav
+
+# 3. Play the audio file (using PowerShell's built-in sound player)
+(New-Object Media.SoundPlayer '.\output.wav').PlaySync()
