@@ -1,3 +1,6 @@
+Set-Location "C:\Users\LaCh616\Documents\installdeapLite\deapLite\backend"
+cmd /c .\venv\Scripts\activate.bat
+Set-Location "C:\Users\LaCh616\n8n_tts"
 # tts_n8n.ps1
 # This script expects the text to speak as the first argument ($args[0])
 
@@ -11,7 +14,7 @@ $ModelPath = "models\hal.onnx"
 $OutputFile = "output.wav"
 
 # Construct the absolute path to the Piper executable
-$PiperExe = Join-Path $ScriptRoot "piper.exe"
+$PiperExe = Join-Path $ScriptRoot "piper"
 
 # --- Logic ---
 
@@ -20,7 +23,7 @@ Set-Location -Path $ScriptRoot
 
 # 2. Convert text to speech
 # Use the call operator (&) to ensure the executable runs correctly
-& $PiperExe --model $ModelPath --output_file $OutputFile --text $TextToSpeak
+& piper --model $ModelPath --output_file $OutputFile --text $TextToSpeak
 
 # 3. Play the audio file
 # Construct the absolute path to the WAV file for reliable playback
